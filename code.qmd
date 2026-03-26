@@ -22,3 +22,32 @@ conda create -n medaka_env -c conda-forge -c bioconda medaka -y
 ```{bash}
 medaka_consensus -i fastq -d "/data/assembly_genomes/______" -o "/data/polished_genomes" -t 8 
 ```
+
+```{r}
+library(Gviz)
+library(Rsamtools)
+library(GenomicAlignments)
+library(GenomicRanges)
+```
+
+```{r}
+bam_file <- system.file("extdata/test.bam", package = "Gviz")
+bam_file
+```
+
+```{r}
+a <- idxstatsBam(bam_file)
+```
+
+```{r}
+# Create a GRanges object from the BAM file
+alignment_ranges <- bam_file |> readGAlignments() |> GRanges()
+
+# Find the start and end boundaries of all reads combined
+range(alignment_ranges)
+```
+
+```{r}
+# Peek at the individual read boundaries
+ranges(alignment_ranges)
+```

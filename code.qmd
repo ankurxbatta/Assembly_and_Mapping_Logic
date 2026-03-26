@@ -18,3 +18,7 @@ flye --pacibo-raw "/Users/abatta00/Documents/BINF4010/Week2_Yeast_Project_ab/dat
 # To create environment
 conda create -n medaka_env -c conda-forge -c bioconda medaka -y
 ```
+
+```{bash}
+medaka_consensus -i fastq -d "/data/assembly_genomes/______" -o "/data/polished_genomes" -t 8 
+```
